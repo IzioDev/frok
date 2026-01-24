@@ -1,0 +1,55 @@
+[workspace]
+resolver = "3"
+members = ["frok-agent", "frok-edge", "dev-tls", "frok-protocol", "frok-common", "frok-bench"]
+
+[workspace.package]
+version = "0.0.1"
+
+[profile.release]
+codegen-units = 2
+lto = "thin"
+opt-level = "s"
+strip = true
+
+[workspace.dependencies]
+tokio = { version="1.49.0", features=["full"] }
+quinn = "0.11.9"
+http = "1.4.0"
+anyhow = "1.0.100"
+rustls = "0.23"
+tokio-util = "0.7.18"
+borsh = { version = "1.5.1", features = ["derive"] }
+async-trait = "0.1.86"
+serde = { version = "1.0.218", features = ["derive"] }
+toml = "0.8.19"
+hyper = { version = "1.6.0", features = ["http1", "http2", "server", "client"] }
+hyper-util = { version = "0.1.7", features = ["tokio"] }
+http-body-util = "0.1.2"
+bytes = "1.9.0"
+ratatui = "0.30.0"
+crossterm = "0.29.0"
+tokio-stream = "0.1.17"
+http-body = "1.0.1"
+dirs = "5.0.1"
+clap = { version = "4.5.32", features = ["derive", "env"] }
+dotenvy = "0.15.7"
+rustls-pemfile = "2.1.2"
+rustls-native-certs = "0.7.3"
+tracing = "0.1.40"
+tracing-appender = "0.2.3"
+tracing-subscriber = { version = "0.3.18", features = ["env-filter"] }
+async-stream = "0.3.6"
+dashmap = "5.5.3"
+futures-util = "0.3.30"
+thiserror = "2.0.11"
+ed25519-dalek = { version = "2.1.1", features = ["rand_core"] }
+hex = "0.4.3"
+openidconnect = "4.0.1"
+rand = "0.8.5"
+redb = "2.6.2"
+reqwest = { version = "0.12.11", default-features = false, features = ["rustls-tls", "json"] }
+sha2 = "0.10.8"
+url = "2.5.4"
+webbrowser = "1.0.1"
+arboard = "3.4.0"
+dev-tls = { path = "dev-tls" }

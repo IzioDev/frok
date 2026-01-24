@@ -1,0 +1,333 @@
+﻿---
+import Layout from "../layouts/Layout.astro";
+import Icon from "../components/Icon.astro";
+
+const installCommand =
+    "curl -fsSL https://raw.githubusercontent.com/IzioDev/frok/master/install.sh | sh";
+---
+
+<Layout
+    title="Frok.it - Self-hosted edge tunneling"
+    description="Expose local HTTP/2, gRPC, and TCP services through your own edge with a QUIC control plane."
+>
+    <main class="relative min-h-screen overflow-hidden">
+        <div class="pointer-events-none absolute inset-0 -z-10">
+            <div
+                class="absolute -top-32 right-[-10%] h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle_at_top,_rgba(110,243,255,0.18),_transparent_65%)] blur-3xl"
+            >
+            </div>
+            <div
+                class="absolute left-[-15%] bottom-[-15%] h-[520px] w-[520px] rounded-full bg-[radial-gradient(circle_at_top,_rgba(79,124,255,0.16),_transparent_60%)] blur-3xl"
+            >
+            </div>
+            <div
+                class="absolute inset-0 bg-[radial-gradient(circle_at_20%_15%,_rgba(139,255,176,0.08),_transparent_35%)]"
+            >
+            </div>
+        </div>
+
+        <div class="mx-auto max-w-6xl px-6 pb-24 pt-10 sm:pt-16 lg:px-10">
+            <header
+                class="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between"
+            >
+                <div class="flex items-center gap-3">
+                    <div
+                        class="flex h-11 w-11 items-center justify-center rounded-2xl bg-panel text-white shadow-glow"
+                    >
+                        f
+                    </div>
+                    <div>
+                        <p
+                            class="text-xl font-semibold tracking-tight text-white"
+                        >
+                            Frok.it
+                        </p>
+                        <p
+                            class="text-[0.65rem] uppercase tracking-[0.24em] text-steel"
+                        >
+                            edge tunneling
+                        </p>
+                    </div>
+                </div>
+                <a
+                    class="inline-flex w-full items-center justify-center gap-2 rounded-full border border-line/80 bg-panel/70 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-neon/60 hover:text-white sm:w-auto sm:justify-start"
+                    href="https://github.com/IzioDev/frok"
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    <Icon name="Github" size={16} class="text-slate-200" />
+                    GitHub
+                </a>
+            </header>
+
+            <section class="mt-14 grid gap-10 lg:grid-cols-2">
+                <div>
+                    <div
+                        class="inline-flex items-center gap-2 rounded-full border border-line/80 bg-panel/70 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-steel"
+                    >
+                        self-hosted tunnel
+                    </div>
+                    <h1
+                        class="mt-6 text-4xl font-semibold leading-tight text-white sm:text-5xl"
+                    >
+                        Ship local services through your own edge.
+                    </h1>
+                    <p class="mt-4 text-lg text-slate-300">
+                        Frok is a self-hosted edge and agent that exposes
+                        HTTP/1.1, HTTP/2, gRPC, and TCP. Run it yourself, or
+                        start instantly on the shared public edge.
+                    </p>
+                    <div class="mt-7 flex flex-col gap-3">
+                        <div
+                            class="rounded-2xl bg-[linear-gradient(120deg,_rgba(110,243,255,0.35),_rgba(79,124,255,0.25),_rgba(139,255,176,0.2))] p-[1px]"
+                        >
+                            <div
+                                class="rounded-[15px] border border-line/70 bg-panel/90 p-4 shadow-sm backdrop-blur"
+                            >
+                                <div
+                                    class="flex flex-wrap items-center justify-between gap-3"
+                                >
+                                    <div
+                                        class="flex w-full flex-wrap items-center gap-2 rounded-full bg-night/60 p-1 text-xs font-semibold text-steel sm:w-auto"
+                                    >
+                                        <button
+                                            type="button"
+                                            class="flex-1 rounded-full px-3 py-1 text-center transition sm:flex-none"
+                                            data-install-tab="unix"
+                                        >
+                                            macOS / Linux
+                                        </button>
+                                        <button
+                                            type="button"
+                                            class="flex-1 rounded-full px-3 py-1 text-center transition sm:flex-none"
+                                            data-install-tab="windows"
+                                        >
+                                            Windows
+                                        </button>
+                                    </div>
+                                </div>
+                                <div
+                                    class="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
+                                >
+                                    <pre
+                                        class="w-full overflow-x-auto rounded-lg border border-line/70 bg-night/70 px-3 py-2 font-mono text-xs text-slate-100 sm:flex-1 sm:text-sm"><code class="whitespace-nowrap" data-install-command>{installCommand}</code></pre>
+                                    <button
+                                        type="button"
+                                        class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[linear-gradient(120deg,_#6ef3ff,_#8bffb0)] px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-night transition hover:brightness-105 sm:w-auto sm:justify-start"
+                                        data-copy={installCommand}
+                                    >
+                                        <Icon
+                                            name="Copy"
+                                            size={16}
+                                            class="text-night"
+                                        />
+                                        <span data-copy-label>Copy</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-xs text-steel">
+                            Public edge: edge.frok.it is free to use today.
+                            Limits may apply in the future.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="grid gap-5">
+                    <div
+                        class="rounded-2xl border border-line/80 bg-panel/70 p-6 shadow-glow"
+                    >
+                        <div
+                            class="flex items-center gap-3 text-sm font-semibold text-white"
+                        >
+                            <div
+                                class="flex h-10 w-10 items-center justify-center rounded-xl bg-[radial-gradient(circle_at_top,_rgba(110,243,255,0.25),_transparent_65%)]"
+                            >
+                                <Icon name="Zap" size={18} class="text-neon" />
+                            </div>
+                            Run instantly on the public edge
+                        </div>
+                        <p class="mt-3 text-sm text-slate-300">
+                            Start with the shared edge and get a URL in seconds.
+                        </p>
+                        <div
+                            class="mt-4 rounded-xl border border-line/70 bg-night/60 p-3 font-mono text-xs text-slate-200"
+                        >
+                            frok 3000
+                        </div>
+                    </div>
+
+                    <div
+                        class="rounded-2xl border border-line/80 bg-panel/70 p-6"
+                    >
+                        <div
+                            class="flex items-center gap-3 text-sm font-semibold text-white"
+                        >
+                            <div
+                                class="flex h-10 w-10 items-center justify-center rounded-xl bg-[radial-gradient(circle_at_top,_rgba(79,124,255,0.28),_transparent_65%)]"
+                            >
+                                <Icon
+                                    name="Server"
+                                    size={18}
+                                    class="text-pulse"
+                                />
+                            </div>
+                            Deploy your own edge
+                        </div>
+                        <p class="mt-3 text-sm text-slate-300">
+                            Run `frok-edge` on your domain with TLS and your
+                            preferred auth.
+                        </p>
+                        <div class="mt-4 grid gap-2 text-sm text-slate-300">
+                            <p>- Bring your own domain and certificates.</p>
+                            <p>
+                                - Keep traffic on your infra with OIDC or keys.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mt-20">
+                <div class="flex flex-wrap items-center justify-between gap-4">
+                    <h2 class="text-2xl font-semibold text-white sm:text-3xl">
+                        Core features
+                    </h2>
+                </div>
+                <div class="mt-8 grid gap-4 md:grid-cols-3">
+                    <article
+                        class="rounded-2xl border border-line/80 bg-panel/70 p-5 shadow-sm"
+                    >
+                        <div
+                            class="flex h-11 w-11 items-center justify-center rounded-xl bg-night text-neon"
+                        >
+                            <Icon name="Rocket" size={20} class="text-neon" />
+                        </div>
+                        <h3 class="mt-4 text-lg font-semibold text-white">
+                            QUIC control plane
+                        </h3>
+                        <p class="mt-2 text-sm text-slate-300">
+                            Stable agent connections with low-latency control
+                            and data streams.
+                        </p>
+                    </article>
+                    <article
+                        class="rounded-2xl border border-line/80 bg-panel/70 p-5 shadow-sm"
+                    >
+                        <div
+                            class="flex h-11 w-11 items-center justify-center rounded-xl bg-night text-pulse"
+                        >
+                            <Icon name="Gauge" size={20} class="text-pulse" />
+                        </div>
+                        <h3 class="mt-4 text-lg font-semibold text-white">
+                            HTTP/2, gRPC, TCP
+                        </h3>
+                        <p class="mt-2 text-sm text-slate-300">
+                            One tunnel handles HTTP/1.1, HTTP/2, gRPC, and raw
+                            TCP.
+                        </p>
+                    </article>
+                    <article
+                        class="rounded-2xl border border-line/80 bg-panel/70 p-5 shadow-sm"
+                    >
+                        <div
+                            class="flex h-11 w-11 items-center justify-center rounded-xl bg-night text-mint"
+                        >
+                            <Icon
+                                name="SquareTerminal"
+                                size={20}
+                                class="text-mint"
+                            />
+                        </div>
+                        <h3 class="mt-4 text-lg font-semibold text-white">
+                            TUI or headless
+                        </h3>
+                        <p class="mt-2 text-sm text-slate-300">
+                            Use the interactive TUI, or run quietly in
+                            automation.
+                        </p>
+                    </article>
+                </div>
+            </section>
+
+            <footer
+                class="mt-20 flex flex-col items-start gap-3 text-sm text-steel sm:flex-row sm:items-center sm:justify-between"
+            >
+                <p>Frok is open source and designed for self-hosted teams.</p>
+                <a
+                    class="inline-flex items-center gap-2 font-semibold text-slate-200 hover:text-white"
+                    href="https://github.com/IzioDev/frok"
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    <Icon name="Github" size={16} class="text-slate-200" />
+                    GitHub
+                </a>
+            </footer>
+        </div>
+    </main>
+</Layout>
+
+<script>
+    const commands = {
+        unix: "curl -fsSL https://raw.githubusercontent.com/IzioDev/frok/master/install.sh | sh",
+        windows:
+            "iwr -useb https://raw.githubusercontent.com/IzioDev/frok/master/install.ps1 | iex",
+    };
+
+    const commandEl = document.querySelector("[data-install-command]");
+    const copyButton = document.querySelector("[data-copy]");
+    const tabs = document.querySelectorAll("[data-install-tab]");
+
+    const setActiveTab = (target) => {
+        tabs.forEach((tab) => {
+            const isActive = tab.dataset.installTab === target;
+            tab.classList.toggle("bg-panel", isActive);
+            tab.classList.toggle("text-white", isActive);
+            tab.classList.toggle("text-steel", !isActive);
+            tab.classList.toggle("ring-1", isActive);
+            tab.classList.toggle("ring-neon/40", isActive);
+        });
+
+        if (commandEl) commandEl.textContent = commands[target];
+        if (copyButton) copyButton.setAttribute("data-copy", commands[target]);
+    };
+
+    const detectOS = () => {
+        const platform = navigator.userAgent.toLowerCase();
+        if (platform.includes("windows")) return "windows";
+        return "unix";
+    };
+
+    const initial = detectOS();
+    setActiveTab(initial);
+
+    tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+            const target = tab.dataset.installTab;
+            if (!target) return;
+            setActiveTab(target);
+        });
+    });
+
+    const buttons = document.querySelectorAll("[data-copy]");
+    buttons.forEach((button) => {
+        button.addEventListener("click", async () => {
+            const command = button.getAttribute("data-copy");
+            if (!command) return;
+            try {
+                await navigator.clipboard.writeText(command);
+                const label = button.querySelector("[data-copy-label]");
+                if (label) {
+                    const previous = label.textContent;
+                    label.textContent = "Copied";
+                    setTimeout(() => {
+                        label.textContent = previous || "Copy";
+                    }, 1800);
+                }
+            } catch (error) {
+                console.error("Copy failed", error);
+            }
+        });
+    });
+</script>

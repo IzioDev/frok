@@ -1,0 +1,114 @@
+name: build-and-deploy
+
+on:
+  push:
+    branches: [master]
+
+concurrency:
+  group: build-and-deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: build-${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            target: ""
+            target_dir: target/release
+            bin_ext: ""
+            artifact: frok-linux-x86_64
+            needs_linker: false
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Install Rust (default toolchain)
+        if: matrix.target == ''
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: stable
+
+      - name: Install Rust (with target)
+        if: matrix.target != ''
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: stable
+          targets: ${{ matrix.target }}
+
+      - name: Install cross linker
+        if: matrix.needs_linker
+        run: sudo apt-get update && sudo apt-get install -y gcc-aarch64-linux-gnu
+
+      - name: Rust cache
+        uses: Swatinem/rust-cache@v2
+        with:
+          cache-on-failure: false
+          cache-bin: "false"
+          cache-all-crates: "false"
+          cache-workspace-crates: "false"
+          add-job-id-key: "false"
+          add-rust-environment-hash-key: "false"
+          prefix-key: frok
+          key: ${{ runner.os }}-${{ matrix.target || 'native' }}-release
+          save-if: ${{ github.ref == 'refs/heads/master' }}
+
+      - name: Build (release, cross)
+        if: matrix.target != ''
+        shell: bash
+        env:
+          CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_LINKER: aarch64-linux-gnu-gcc
+        run: cargo build --release -p frok-edge -p frok-agent --target ${{ matrix.target }}
+
+      - name: Build (release, native)
+        if: matrix.target == ''
+        shell: bash
+        run: cargo build --release -p frok-edge -p frok-agent
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v6
+        with:
+          name: ${{ matrix.artifact }}
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 6
+          path: |
+            ${{ matrix.target_dir }}/frok-edge${{ matrix.bin_ext }}
+            ${{ matrix.target_dir }}/frok${{ matrix.bin_ext }}
+
+  deploy:
+    name: deploy-linux
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.ref == 'refs/heads/master'
+    steps:
+      - name: Download linux artifacts
+        uses: actions/download-artifact@v7
+        with:
+          name: frok-linux-x86_64
+          path: dist
+
+      - name: Make binaries executable
+        run: chmod +x dist/frok-edge dist/frok
+
+      - name: Upload binaries to server
+        uses: appleboy/scp-action@v1.0.0
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.DEPLOY_USER }}
+          key: ${{ secrets.DEPLOY_KEY }}
+          port: ${{ secrets.DEPLOY_PORT || 22 }}
+          source: "dist/frok-edge,dist/frok"
+          target: "/opt/frok"
+          strip_components: 1
+
+      - name: Restart service
+        uses: appleboy/ssh-action@v1.2.4
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.DEPLOY_USER }}
+          key: ${{ secrets.DEPLOY_KEY }}
+          port: ${{ secrets.DEPLOY_PORT || 22 }}
+          script: sudo systemctl restart frok

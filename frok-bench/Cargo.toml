@@ -1,0 +1,33 @@
+[package]
+name = "frok-bench"
+version.workspace = true
+edition = "2024"
+
+[features]
+bench-heavy = []
+
+[dependencies]
+tokio.workspace = true
+tokio-util.workspace = true
+anyhow.workspace = true
+hyper.workspace = true
+hyper-util.workspace = true
+http.workspace = true
+http-body-util.workspace = true
+bytes.workspace = true
+futures-util.workspace = true
+url.workspace = true
+dev-tls.workspace = true
+hdrhistogram = "7"
+
+[dev-dependencies]
+criterion = { version = "0.5", features = ["async_tokio"] }
+
+[[bench]]
+name = "ceremony"
+harness = false
+
+[[bench]]
+name = "ceremony_heavy"
+harness = false
+required-features = ["bench-heavy"]

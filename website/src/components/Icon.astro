@@ -1,0 +1,38 @@
+---
+import * as lucideIcons from "lucide/dist/esm/lucide/src/iconsAndAliases.js";
+
+const { name, size = 20, stroke = 1.8, class: className = "" } = Astro.props;
+const iconNode = lucideIcons?.[name];
+
+const escapeAttr = (value) => String(value).replace(/"/g, "&quot;");
+
+const renderAttrs = (attrs) =>
+  Object.entries(attrs)
+    .filter(([, value]) => value !== undefined && value !== null && value !== "")
+    .map(([key, value]) => `${key}="${escapeAttr(value)}"`)
+    .join(" ");
+
+const renderNode = (node) => {
+  const [tag, attrs, children] = node;
+  const childrenMarkup = children?.map(renderNode).join("") ?? "";
+  const attrsMarkup = renderAttrs(attrs);
+  return `<${tag}${attrsMarkup ? ` ${attrsMarkup}` : ""}>${childrenMarkup}</${tag}>`;
+};
+
+const svg = iconNode
+  ? `<svg ${renderAttrs({
+      xmlns: "http://www.w3.org/2000/svg",
+      width: size,
+      height: size,
+      viewBox: "0 0 24 24",
+      fill: "none",
+      stroke: "currentColor",
+      "stroke-width": stroke,
+      "stroke-linecap": "round",
+      "stroke-linejoin": "round",
+      class: className,
+    })}>${iconNode.map(renderNode).join("")}</svg>`
+  : "";
+---
+
+<span aria-hidden="true" set:html={svg} />

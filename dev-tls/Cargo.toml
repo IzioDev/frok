@@ -1,0 +1,10 @@
+[package]
+name = "dev-tls"
+version.workspace = true
+edition = "2024"
+
+[dependencies]
+anyhow.workspace = true
+quinn.workspace = true
+rustls.workspace = true
+rcgen = "0.14"

@@ -1,0 +1,24 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b0f14" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+    <radialGradient id="glowA" cx="85%" cy="15%" r="45%">
+      <stop offset="0%" stop-color="#6ef3ff" stop-opacity="0.45" />
+      <stop offset="100%" stop-color="#6ef3ff" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="glowB" cx="10%" cy="60%" r="55%">
+      <stop offset="0%" stop-color="#4f7cff" stop-opacity="0.35" />
+      <stop offset="100%" stop-color="#4f7cff" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <rect width="1200" height="630" fill="url(#glowA)" />
+  <rect width="1200" height="630" fill="url(#glowB)" />
+  <rect x="90" y="98" width="120" height="120" rx="28" fill="#121826" />
+  <text x="150" y="178" text-anchor="middle" font-size="72" font-family="Space Grotesk, Arial, sans-serif" fill="#e2e8f0" font-weight="600">f</text>
+  <text x="240" y="170" font-size="72" font-family="Space Grotesk, Arial, sans-serif" fill="#f8fafc" font-weight="600">frok</text>
+  <text x="240" y="230" font-size="28" font-family="Space Grotesk, Arial, sans-serif" fill="#94a3b8">Self-hosted edge tunneling</text>
+  <text x="240" y="300" font-size="22" font-family="JetBrains Mono, monospace" fill="#e2e8f0">curl -fsSL https://raw.githubusercontent.com/IzioDev/frok/master/install.sh | sh</text>
+</svg>

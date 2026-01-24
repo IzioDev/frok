@@ -1,0 +1,16 @@
+[package]
+name = "frok-common"
+version.workspace = true
+edition = "2024"
+
+[dependencies]
+anyhow.workspace = true
+bytes.workspace = true
+dirs.workspace = true
+tokio.workspace = true
+tracing.workspace = true
+tracing-appender.workspace = true
+tracing-subscriber.workspace = true
+thiserror.workspace = true
+
+frok-protocol = { path = "../frok-protocol" }

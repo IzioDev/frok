@@ -1,0 +1,39 @@
+[package]
+name = "frok-edge"
+version.workspace = true
+edition = "2024"
+build = "build.rs"
+
+[dependencies]
+tokio.workspace = true
+quinn.workspace = true
+anyhow.workspace = true
+tokio-util.workspace = true
+async-trait.workspace = true
+hyper.workspace = true
+hyper-util.workspace = true
+http-body-util.workspace = true
+bytes.workspace = true
+tokio-stream.workspace = true
+http-body.workspace = true
+rustls.workspace = true
+clap.workspace = true
+dotenvy.workspace = true
+rustls-pemfile.workspace = true
+tracing.workspace = true
+tracing-appender.workspace = true
+tracing-subscriber.workspace = true
+async-stream.workspace = true
+dashmap.workspace = true
+borsh.workspace = true
+ed25519-dalek.workspace = true
+hex.workspace = true
+rand.workspace = true
+redb.workspace = true
+sha2.workspace = true
+openidconnect.workspace = true
+reqwest.workspace = true
+
+dev-tls = {path = "../dev-tls"}
+frok-protocol = {path = "../frok-protocol"}
+frok-common = {path = "../frok-common"}

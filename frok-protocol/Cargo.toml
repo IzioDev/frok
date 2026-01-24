@@ -1,0 +1,9 @@
+[package]
+name = "frok-protocol"
+version.workspace = true
+edition = "2024"
+
+[dependencies]
+borsh.workspace = true
+async-trait.workspace = true
+bytes.workspace = true

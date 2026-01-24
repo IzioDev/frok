@@ -1,0 +1,47 @@
+---
+import "../styles/global.css";
+
+const {
+    title = "Frok.it - Self-hosted edge tunneling",
+    description = "Expose local HTTP/2, gRPC, and TCP services through your own edge with a QUIC control plane.",
+    image = "/og.svg",
+    site = "https://frok.it",
+} = Astro.props;
+
+const pathname = Astro.url?.pathname ?? "/";
+const canonical = new URL(pathname, site).toString();
+const socialImage = new URL(image, site).toString();
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <meta name="robots" content="index, follow" />
+        <meta name="theme-color" content="#0b0f14" />
+        <meta name="color-scheme" content="dark" />
+        <link rel="canonical" href={canonical} />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" href="/favicon.ico" />
+
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={canonical} />
+        <meta property="og:image" content={socialImage} />
+        <meta property="og:site_name" content="Frok" />
+        <meta property="og:locale" content="en_US" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={socialImage} />
+    </head>
+    <body>
+        <slot />
+    </body>
+</html>
