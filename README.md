@@ -68,10 +68,18 @@ Overrides:
 cargo build
 ```
 
+Commands below use the binary names (`frok` and `frok-edge`). If you built from source and they are
+not on your `PATH`, run them from `target/debug`:
+
+```bash
+./target/debug/frok --help
+./target/debug/frok-edge --help
+```
+
 ### Run the edge (development)
 
 ```bash
-cargo run -p frok-edge -- --insecure \
+frok-edge --insecure \
   --quic-addr 0.0.0.0:5000 \
   --http-addr 0.0.0.0:8080
 ```
@@ -84,20 +92,22 @@ Notes:
 ### Run the agent (TUI)
 
 ```bash
-cargo run -p frok-agent -- --edge example.com:443
+# By default it uses the public edge.frok.it agent
+# Specify --edge example.com option to connect to your own
+frok
 ```
 
 ### Quick expose (no TUI)
 
 ```bash
 # Expose local HTTP service on port 3000
-cargo run -p frok-agent -- 3000
+frok 3000
 
 # Expose local HTTP/2 (gRPC) service
-cargo run -p frok-agent -- http 3000 --mode http2
+frok http 3000 --mode http2
 
 # Expose local TCP service
-cargo run -p frok-agent -- tcp 22 --name ssh
+frok tcp 22 --name ssh
 ```
 
 Use `--once` to register, print the URL, and exit.

@@ -3,7 +3,7 @@ resolver = "3"
 members = ["frok-agent", "frok-edge", "dev-tls", "frok-protocol", "frok-common", "frok-bench"]
 
 [workspace.package]
-version = "0.0.1"
+version = "0.0.2"
 
 [profile.release]
 codegen-units = 2

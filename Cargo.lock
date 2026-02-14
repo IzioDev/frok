@@ -892,7 +892,7 @@ dependencies = [
 
 [[package]]
 name = "dev-tls"
-version = "0.0.1"
+version = "0.0.2"
 dependencies = [
  "anyhow",
  "quinn",
@@ -1207,7 +1207,7 @@ dependencies = [
 
 [[package]]
 name = "frok-agent"
-version = "0.0.1"
+version = "0.0.2"
 dependencies = [
  "anyhow",
  "arboard",
@@ -1251,7 +1251,7 @@ dependencies = [
 
 [[package]]
 name = "frok-bench"
-version = "0.0.1"
+version = "0.0.2"
 dependencies = [
  "anyhow",
  "bytes",
@@ -1270,7 +1270,7 @@ dependencies = [
 
 [[package]]
 name = "frok-common"
-version = "0.0.1"
+version = "0.0.2"
 dependencies = [
  "anyhow",
  "bytes",
@@ -1285,7 +1285,7 @@ dependencies = [
 
 [[package]]
 name = "frok-edge"
-version = "0.0.1"
+version = "0.0.2"
 dependencies = [
  "anyhow",
  "async-stream",
@@ -1322,7 +1322,7 @@ dependencies = [
 
 [[package]]
 name = "frok-protocol"
-version = "0.0.1"
+version = "0.0.2"
 dependencies = [
  "async-trait",
  "borsh",
