@@ -1,4 +1,4 @@
-﻿---
+---
 import Layout from "../layouts/Layout.astro";
 import Icon from "../components/Icon.astro";
 
@@ -26,7 +26,7 @@ const installCommand =
             </div>
         </div>
 
-        <div class="mx-auto max-w-6xl px-6 pb-24 pt-10 sm:pt-16 lg:px-10">
+        <div class="mx-auto max-w-6xl px-6 pb-12 sm:pb-24 pt-10 sm:pt-16 lg:px-10">
             <header
                 class="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between"
             >
@@ -60,8 +60,8 @@ const installCommand =
                 </a>
             </header>
 
-            <section class="mt-14 grid gap-10 lg:grid-cols-2">
-                <div>
+            <section class="mt-6 sm:mt-14 grid gap-6 lg:grid-cols-2 lg:gap-10">
+                <div class="min-w-0">
                     <div
                         class="inline-flex items-center gap-2 rounded-full border border-line/80 bg-panel/70 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-steel"
                     >
@@ -77,12 +77,12 @@ const installCommand =
                         HTTP/1.1, HTTP/2, gRPC, and TCP. Run it yourself, or
                         start instantly on the shared public edge.
                     </p>
-                    <div class="mt-7 flex flex-col gap-3">
+                    <div class="mt-7 flex min-w-0 flex-col gap-3">
                         <div
-                            class="rounded-2xl bg-[linear-gradient(120deg,_rgba(110,243,255,0.35),_rgba(79,124,255,0.25),_rgba(139,255,176,0.2))] p-[1px]"
+                            class="min-w-0 rounded-xl bg-[linear-gradient(120deg,_rgba(110,243,255,0.35),_rgba(79,124,255,0.25),_rgba(139,255,176,0.2))] p-[1px] sm:rounded-2xl"
                         >
                             <div
-                                class="rounded-[15px] border border-line/70 bg-panel/90 p-4 shadow-sm backdrop-blur"
+                                class="min-w-0 rounded-[13px] border border-line/70 bg-panel/90 p-3 shadow-sm backdrop-blur sm:rounded-[15px] sm:p-4"
                             >
                                 <div
                                     class="flex flex-wrap items-center justify-between gap-3"
@@ -107,10 +107,10 @@ const installCommand =
                                     </div>
                                 </div>
                                 <div
-                                    class="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
+                                    class="mt-4 flex min-w-0 flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
                                 >
                                     <pre
-                                        class="w-full overflow-x-auto rounded-lg border border-line/70 bg-night/70 px-3 py-2 font-mono text-xs text-slate-100 sm:flex-1 sm:text-sm"><code class="whitespace-nowrap" data-install-command>{installCommand}</code></pre>
+                                        class="min-w-0 w-full overflow-x-auto rounded-lg border border-line/70 bg-night/70 px-3 py-2 font-mono text-xs text-slate-100 sm:flex-1 sm:text-sm"><code class="whitespace-nowrap" data-install-command>{installCommand}</code></pre>
                                     <button
                                         type="button"
                                         class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[linear-gradient(120deg,_#6ef3ff,_#8bffb0)] px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-night transition hover:brightness-105 sm:w-auto sm:justify-start"
@@ -126,19 +126,19 @@ const installCommand =
                                 </div>
                             </div>
                         </div>
-                        <p class="text-xs text-steel">
+                        <p class="text-xs text-steel px-2">
                             Public edge: edge.frok.it is free to use today.
                             Limits may apply in the future.
                         </p>
                     </div>
                 </div>
 
-                <div class="grid gap-5">
+                <div class="grid min-w-0 gap-4 sm:gap-5">
                     <div
-                        class="rounded-2xl border border-line/80 bg-panel/70 p-6 shadow-glow"
+                        class="rounded-xl border border-line/80 bg-panel/70 p-4 shadow-glow sm:rounded-2xl sm:p-6"
                     >
                         <div
-                            class="flex items-center gap-3 text-sm font-semibold text-white"
+                            class="flex items-start gap-3 text-sm font-semibold text-white sm:items-center"
                         >
                             <div
                                 class="flex h-10 w-10 items-center justify-center rounded-xl bg-[radial-gradient(circle_at_top,_rgba(110,243,255,0.25),_transparent_65%)]"
@@ -158,10 +158,10 @@ const installCommand =
                     </div>
 
                     <div
-                        class="rounded-2xl border border-line/80 bg-panel/70 p-6"
+                        class="rounded-xl border border-line/80 bg-panel/70 p-4 sm:rounded-2xl sm:p-6"
                     >
                         <div
-                            class="flex items-center gap-3 text-sm font-semibold text-white"
+                            class="flex items-start gap-3 text-sm font-semibold text-white sm:items-center"
                         >
                             <div
                                 class="flex h-10 w-10 items-center justify-center rounded-xl bg-[radial-gradient(circle_at_top,_rgba(79,124,255,0.28),_transparent_65%)]"
@@ -188,13 +188,13 @@ const installCommand =
                 </div>
             </section>
 
-            <section class="mt-20">
+            <section class="mt-10 sm:mt-20">
                 <div class="flex flex-wrap items-center justify-between gap-4">
                     <h2 class="text-2xl font-semibold text-white sm:text-3xl">
                         Core features
                     </h2>
                 </div>
-                <div class="mt-8 grid gap-4 md:grid-cols-3">
+                <div class="mt-6 sm:mt-8 grid gap-4 md:grid-cols-3">
                     <article
                         class="rounded-2xl border border-line/80 bg-panel/70 p-5 shadow-sm"
                     >
@@ -251,7 +251,7 @@ const installCommand =
             </section>
 
             <footer
-                class="mt-20 flex flex-col items-start gap-3 text-sm text-steel sm:flex-row sm:items-center sm:justify-between"
+                class="mt-8 sm:mt-20 flex text-center sm:text-start flex-col items-center gap-3 text-sm text-steel sm:flex-row sm:items-center sm:justify-between"
             >
                 <p>Frok is open source and designed for self-hosted teams.</p>
                 <a
